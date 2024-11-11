@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import { Button, Input, Select } from 'antd';
+import { Button, Input, Select, Spin } from 'antd';
 import { Flex } from './ui-lib/Flex';
 import { VizGroupService } from './services';
 import { utils } from './utils';
@@ -9,10 +9,12 @@ function App() {
   const [serverName, setServerName] = useState("");
   const [serverID, setServerID] = useState("");
   const [selectedSSQ, setSelectedSSQ] = useState("CAA.Rade.V5R21-V5R22.SSQ");
+  const [loading, setLoading] = useState(false);
   return (
     <Flex direction='column' spacing={'1em'} style={{
       padding: '1em'
     }}>
+      <Spin fullscreen spinning={loading}></Spin>
       <Flex direction='row' verticalCenter>
         <div style={{
           minWidth: '10em',
@@ -63,13 +65,27 @@ function App() {
         <Button style={{
           flex: 1
         }} onClick={async e => {
-          let task = await VizGroupService.Tasks.RunSync("dsls", {
-            ServerName: serverName,
-            ServerID: serverID,
-            SSQ: selectedSSQ,
-          });
-          console.log(task);
-          utils.download(`/api/v1/iostorage/download?fileId=${task.Output.FileID}`);
+          setLoading(true)
+          try {
+            // let task = await VizGroupService.Tasks.RunSync("dsls", {
+            //   ServerName: serverName,
+            //   ServerID: serverID,
+            //   SSQ: selectedSSQ,
+            // });
+            // console.log(task);
+            // utils.download(`/api/v1/iostorage/download/${task.Output.FileID}`);
+            let task = await VizGroupService.Tasks.Run("dsls", {
+              ServerName: serverName,
+              ServerID: serverID,
+              SSQ: selectedSSQ,
+            }, progress => {
+              console.log(progress)
+            });
+            console.log(task)
+          }
+          catch {
+            setLoading(false)
+          }
         }}>{"Sure"}</Button>
       </Flex>
     </Flex>
