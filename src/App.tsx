@@ -9,18 +9,37 @@ function App() {
   useEffect(() => {
     console.log(process.env.REACT_APP_BUILD_TIME);
   }, []);
+  const [isPhone, setIsPhone] = useState(window.innerWidth / window.innerHeight < 1);
+
+
   const [serverName, setServerName] = useState("");
   const [serverID, setServerID] = useState("");
   const [selectedSSQ, setSelectedSSQ] = useState("CAA.Rade.V5R21-V5R22.SSQ");
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+
+  useEffect(() => {
+    // 2. 定义一个监听窗口大小变化的函数
+    const handleResize = () => {
+      setIsPhone(window.innerWidth / window.innerHeight < 1);
+    };
+
+    // 3. 在组件挂载时设置事件监听
+    window.addEventListener('resize', handleResize);
+
+    // 4. 组件卸载时移除事件监听，避免内存泄漏
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return <div>
     {contextHolder}
     <Spin fullscreen spinning={loading}></Spin>
     <Flex direction='column' spacing={'1em'} style={{
       padding: '1em'
     }}>
-      <Flex direction='row' verticalCenter>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter>
         <div style={{
           minWidth: '10em',
           textWrap: 'nowrap'
@@ -31,7 +50,7 @@ function App() {
           setServerName(e.target.value)
         }}></Input>
       </Flex>
-      <Flex direction='row' verticalCenter>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter>
         <div style={{
           minWidth: '10em',
           textWrap: 'nowrap'
@@ -42,7 +61,7 @@ function App() {
           setServerID(e.target.value)
         }}></Input>
       </Flex>
-      <Flex direction='row' verticalCenter>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter>
         <div style={{
           minWidth: '10em',
           textWrap: 'nowrap'
