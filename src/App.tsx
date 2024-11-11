@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from './logo.svg';
-import { Flex } from 'natived';
 import { Button, Input, Select } from 'antd';
+import { Flex } from './ui-lib/Flex';
 
 function App() {
   const [serverName, setServerName] = useState("");
@@ -42,7 +42,7 @@ function App() {
       </Flex>
       <Flex>
         <Button onClick={e=>{
-          
+
         }}>{"Sure"}</Button>
       </Flex>
     </Flex>
