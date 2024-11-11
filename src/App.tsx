@@ -39,10 +39,11 @@ function App() {
     <Flex direction='column' spacing={'1em'} style={{
       padding: '1em'
     }}>
-      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone?false:true}>
         <div style={{
-          minWidth: '10em',
-          textWrap: 'nowrap'
+          minWidth: '7em',
+          textWrap: 'nowrap',
+          textAlign:'left'
         }}>{"Server Name:"}</div>
         <Input style={{
           flex: 1
@@ -50,10 +51,11 @@ function App() {
           setServerName(e.target.value)
         }}></Input>
       </Flex>
-      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone?false:true}>
         <div style={{
-          minWidth: '10em',
-          textWrap: 'nowrap'
+          minWidth: '7em',
+          textWrap: 'nowrap',
+          textAlign:'left'
         }}>{"Server ID:"}</div>
         <Input style={{
           flex: 1
@@ -61,10 +63,11 @@ function App() {
           setServerID(e.target.value)
         }}></Input>
       </Flex>
-      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone?false:true}>
         <div style={{
-          minWidth: '10em',
-          textWrap: 'nowrap'
+          minWidth: '7em',
+          textWrap: 'nowrap',
+          textAlign:'left'
         }}>{"SSQ:"}</div>
         <Select style={{
           flex: 1
