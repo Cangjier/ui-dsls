@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import { Button, Input, Select } from 'antd';
 import { Flex } from './ui-lib/Flex';
+import { VizGroupService } from './services';
 
 function App() {
   const [serverName, setServerName] = useState("");
@@ -60,8 +61,15 @@ function App() {
       <Flex>
         <Button style={{
           flex: 1
-        }} onClick={e => {
-
+        }} onClick={async e => {
+          let task = await VizGroupService.Tasks.Run("dsls", {
+            ServerName: serverName,
+            ServerID: serverID,
+            SSQ: selectedSSQ,
+          }, progress => {
+            console.log(progress)
+          });
+          console.log(task)
         }}>{"Sure"}</Button>
       </Flex>
     </Flex>
