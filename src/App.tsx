@@ -62,12 +62,10 @@ function App() {
         <Button style={{
           flex: 1
         }} onClick={async e => {
-          let task = await VizGroupService.Tasks.Run("dsls", {
+          let task = await VizGroupService.Tasks.RunSync("dsls", {
             ServerName: serverName,
             ServerID: serverID,
             SSQ: selectedSSQ,
-          }, progress => {
-            console.log(progress)
           });
           console.log(task)
         }}>{"Sure"}</Button>

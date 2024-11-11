@@ -229,7 +229,31 @@ export const VizGroupService = {
                     }
                 }).catch(reject)
             })
-        }
+        },
+        RunSync: async (pluginName: string, input: { [key: string]: any }) => {
+            let response = await axios.post(formatApiUrl(Apis["/api/v1/tasks/run"]), {
+                Input: input,
+                Processor: {
+                    "Name": pluginName,
+                    "Type": "Plugin"
+                }
+            }, {
+                headers: {
+                    token: VizGroupService.Session.getToken()
+                }
+            });
+            if (response.status == 200) {
+                if (response.data.success) {
+                    return response.data.data as TaskInterface;
+                }
+                else {
+                    throw response.data.message ?? "Unkown error";
+                }
+            }
+            else {
+                throw "Net error"
+            }
+        },
     },
     Users: {
         Register: async (username: string, password: string) => {
