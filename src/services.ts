@@ -177,7 +177,7 @@ export const VizGroupService = {
             let task_id = await runAsync;
             let subscribeProgress = new Promise<void>((resolve, reject) => {
                 // 建立websocket连接，订阅
-                let ws = new WebSocket(`${location.protocol.includes("s") ? "wss" : "ws"}://${apiAddress}/`);
+                let ws = new WebSocket(`${window.location.protocol.includes("s") ? "wss" : "ws"}://${apiAddress}/`);
                 ws.onopen = () => {
                     ws.send(JSON.stringify({
                         task_id: task_id,
