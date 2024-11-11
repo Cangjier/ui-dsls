@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
-import { Button, Input, Select, Spin } from 'antd';
+import { Button, Input, message, Select, Spin } from 'antd';
 import { Flex } from './ui-lib/Flex';
 import { VizGroupService } from './services';
 import { utils } from './utils';
@@ -13,10 +13,12 @@ function App() {
   const [serverID, setServerID] = useState("");
   const [selectedSSQ, setSelectedSSQ] = useState("CAA.Rade.V5R21-V5R22.SSQ");
   const [loading, setLoading] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage();
   return (
     <Flex direction='column' spacing={'1em'} style={{
       padding: '1em'
     }}>
+      {contextHolder}
       <Spin fullscreen spinning={loading}></Spin>
       <Flex direction='row' verticalCenter>
         <div style={{
@@ -77,7 +79,16 @@ function App() {
             }, progress => {
               console.log(progress)
             });
-            utils.download(`/api/v1/iostorage/download/${task.Output.FileID}`);
+            if (task.Output.FileID) {
+              utils.download(`/api/v1/iostorage/download/${task.Output.FileID}`);
+            }
+            else if (task.Output.Message) {
+              messageApi.open({
+                type: 'error',
+                content: task.Output.Message,
+                duration: 10,
+              });
+            }
           }
           finally {
             setLoading(false)

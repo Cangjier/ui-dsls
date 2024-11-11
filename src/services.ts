@@ -186,9 +186,14 @@ export const VizGroupService = {
                     }));
                 }
                 ws.onmessage = (event) => {
-                    let data = JSON.parse(event.data);
-                    if (data.progress) {
-                        onProgress(data.progress);
+                    try {
+                        let data = JSON.parse(event.data);
+                        if (data.progress) {
+                            onProgress(data.progress);
+                        }
+                    }
+                    catch {
+                        console.log(event.data)
                     }
                 }
                 ws.onclose = () => {
