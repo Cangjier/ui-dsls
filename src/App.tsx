@@ -8,22 +8,39 @@ function App() {
   const [serverID, setServerID] = useState("");
   const [selectedSSQ, setSelectedSSQ] = useState("CAA.Rade.V5R21-V5R22.SSQ");
   return (
-    <Flex direction='column'>
+    <Flex direction='column' spacing={'1em'} style={{
+      padding: '1em'
+    }}>
       <Flex direction='row' verticalCenter>
-        <div>{"Server Name:"}</div>
-        <Input value={serverName} onChange={e => {
+        <div style={{
+          minWidth: '10em',
+          textWrap: 'nowrap'
+        }}>{"Server Name:"}</div>
+        <Input style={{
+          flex: 1
+        }} value={serverName} onChange={e => {
           setServerName(e.target.value)
         }}></Input>
       </Flex>
       <Flex direction='row' verticalCenter>
-        <div>{"Server ID:"}</div>
-        <Input value={serverID} onChange={e => {
+        <div style={{
+          minWidth: '10em',
+          textWrap: 'nowrap'
+        }}>{"Server ID:"}</div>
+        <Input style={{
+          flex: 1
+        }} value={serverID} onChange={e => {
           setServerID(e.target.value)
         }}></Input>
       </Flex>
       <Flex direction='row' verticalCenter>
-        <div>{"SSQ:"}</div>
-        <Select options={[
+        <div style={{
+          minWidth: '10em',
+          textWrap: 'nowrap'
+        }}>{"SSQ:"}</div>
+        <Select style={{
+          flex: 1
+        }} options={[
           {
             label: "CAA.Rade.V5R21-V5R22.SSQ",
             value: "CAA.Rade.V5R21-V5R22.SSQ"
@@ -41,7 +58,9 @@ function App() {
         }}></Select>
       </Flex>
       <Flex>
-        <Button onClick={e=>{
+        <Button style={{
+          flex: 1
+        }} onClick={e => {
 
         }}>{"Sure"}</Button>
       </Flex>
