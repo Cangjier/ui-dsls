@@ -6,6 +6,7 @@ import { VizGroupService } from './services';
 import { utils } from './utils';
 
 function App() {
+  console.log(`1.0.0`)
   const [serverName, setServerName] = useState("");
   const [serverID, setServerID] = useState("");
   const [selectedSSQ, setSelectedSSQ] = useState("CAA.Rade.V5R21-V5R22.SSQ");
