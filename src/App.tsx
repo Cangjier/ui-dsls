@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { Button, Input, Select } from 'antd';
 import { Flex } from './ui-lib/Flex';
 import { VizGroupService } from './services';
+import { utils } from './utils';
 
 function App() {
   const [serverName, setServerName] = useState("");
@@ -67,7 +68,8 @@ function App() {
             ServerID: serverID,
             SSQ: selectedSSQ,
           });
-          console.log(task)
+          console.log(task);
+          utils.download(`/api/v1/iostorage/download?fileId=${task.Output.FileID}`);
         }}>{"Sure"}</Button>
       </Flex>
     </Flex>
