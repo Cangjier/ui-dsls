@@ -7,7 +7,7 @@ import { utils } from './utils';
 
 function App() {
   useEffect(() => {
-    console.log(process.env.BUILD_TIME);
+    console.log(process.env.REACT_APP_BUILD_TIME);
   }, []);
   const [serverName, setServerName] = useState("");
   const [serverID, setServerID] = useState("");
