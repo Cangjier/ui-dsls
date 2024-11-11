@@ -14,12 +14,12 @@ function App() {
   const [selectedSSQ, setSelectedSSQ] = useState("CAA.Rade.V5R21-V5R22.SSQ");
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
-  return (
+  return <div>
+    {contextHolder}
+    <Spin fullscreen spinning={loading}></Spin>
     <Flex direction='column' spacing={'1em'} style={{
       padding: '1em'
     }}>
-      {contextHolder}
-      <Spin fullscreen spinning={loading}></Spin>
       <Flex direction='row' verticalCenter>
         <div style={{
           minWidth: '10em',
@@ -96,7 +96,7 @@ function App() {
         }}>{"Sure"}</Button>
       </Flex>
     </Flex>
-  );
+  </div>
 }
 
 export default App;
