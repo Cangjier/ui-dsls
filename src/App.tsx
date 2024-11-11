@@ -83,7 +83,7 @@ function App() {
             });
             console.log(task)
           }
-          catch {
+          finally {
             setLoading(false)
           }
         }}>{"Sure"}</Button>
