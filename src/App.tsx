@@ -15,6 +15,7 @@ function App() {
   const [serverName, setServerName] = useState("");
   const [serverID, setServerID] = useState("");
   const [selectedSSQ, setSelectedSSQ] = useState("CAA.Rade.V5R21-V5R22.SSQ");
+  const [selectedGenerator, setSelectedGenerator] = useState("DSLS.LicGen.v1.6.SSQ.exe");
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -39,11 +40,11 @@ function App() {
     <Flex direction='column' spacing={'1em'} style={{
       padding: '1em'
     }}>
-      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone?false:true}>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone ? false : true}>
         <div style={{
           minWidth: '7em',
           textWrap: 'nowrap',
-          textAlign:'left'
+          textAlign: 'left'
         }}>{"Server Name:"}</div>
         <Input style={{
           flex: 1
@@ -51,11 +52,11 @@ function App() {
           setServerName(e.target.value)
         }}></Input>
       </Flex>
-      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone?false:true}>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone ? false : true}>
         <div style={{
           minWidth: '7em',
           textWrap: 'nowrap',
-          textAlign:'left'
+          textAlign: 'left'
         }}>{"Server ID:"}</div>
         <Input style={{
           flex: 1
@@ -63,11 +64,11 @@ function App() {
           setServerID(e.target.value)
         }}></Input>
       </Flex>
-      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone?false:true}>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone ? false : true}>
         <div style={{
           minWidth: '7em',
           textWrap: 'nowrap',
-          textAlign:'left'
+          textAlign: 'left'
         }}>{"SSQ:"}</div>
         <Select style={{
           flex: 1
@@ -88,6 +89,23 @@ function App() {
           setSelectedSSQ(e)
         }}></Select>
       </Flex>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone ? false : true}>
+        <div style={{
+          minWidth: '7em',
+          textWrap: 'nowrap',
+          textAlign: 'left'
+        }}>{"Generator:"}</div>
+        <Select style={{
+          flex: 1
+        }} options={[
+          {
+            label: "DSLS.LicGen.v1.6.SSQ.exe",
+            value: "DSLS.LicGen.v1.6.SSQ.exe"
+          }
+        ]} value={selectedGenerator} onChange={e => {
+          setSelectedGenerator(e)
+        }}></Select>
+      </Flex>
       <Flex>
         <Button style={{
           flex: 1
@@ -98,6 +116,7 @@ function App() {
               ServerName: serverName,
               ServerID: serverID,
               SSQ: selectedSSQ,
+              Generator: selectedGenerator
             }, progress => {
               console.log(progress)
             });
