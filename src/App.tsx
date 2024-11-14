@@ -45,13 +45,10 @@ function App() {
           minWidth: '7em',
           textWrap: 'nowrap',
           textAlign: 'left'
-        }}>{"Last Update Time:"}</div>
-        <div style={{
-          flex: 1,
-          textAlign: 'left'
-        }}>
-          {process.env.REACT_APP_BUILD_TIME}
-        </div>
+        }}>{"Update Time:"}</div>
+        <Input style={{
+          flex: 1
+        }} value={process.env.REACT_APP_BUILD_TIME} readOnly></Input>
       </Flex>
       <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone ? false : true}>
         <div style={{
