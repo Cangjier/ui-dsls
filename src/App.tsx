@@ -45,6 +45,19 @@ function App() {
           minWidth: '7em',
           textWrap: 'nowrap',
           textAlign: 'left'
+        }}>{"Last Update Time:"}</div>
+        <div style={{
+          flex: 1,
+          textAlign: 'left'
+        }}>
+          {process.env.REACT_APP_BUILD_TIME}
+        </div>
+      </Flex>
+      <Flex direction={isPhone ? 'column' : 'row'} verticalCenter={isPhone ? false : true}>
+        <div style={{
+          minWidth: '7em',
+          textWrap: 'nowrap',
+          textAlign: 'left'
         }}>{"Server Name:"}</div>
         <Input style={{
           flex: 1
