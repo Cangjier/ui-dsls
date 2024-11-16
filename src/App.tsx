@@ -94,6 +94,10 @@ function App() {
           {
             label: "CATIA.V5R21-V5R22-V23.SSQ",
             value: "CATIA.V5R21-V5R22-V23.SSQ"
+          },
+          {
+            label: "CATIA.V5R21-V5R25.SSQ",
+            value: "CATIA.V5R21-V5R25.SSQ"
           }
         ]} value={selectedSSQ} onChange={e => {
           setSelectedSSQ(e)
