@@ -115,6 +115,10 @@ function App() {
           {
             label: "DSLS.LicGen.v1.6.SSQ.exe",
             value: "DSLS.LicGen.v1.6.SSQ.exe"
+          },
+          {
+            label:"DSLS.LicGen.v1.5.SSQ.exe",
+            value:"DSLS.LicGen.v1.5.SSQ.exe"
           }
         ]} value={selectedGenerator} onChange={e => {
           setSelectedGenerator(e)
